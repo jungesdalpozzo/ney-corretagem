@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10231b" />
+    <meta name="description" content="Imóveis rurais selecionados para viver, investir e produzir." />
+    <title>Terra Nobre — Imóveis Rurais</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header class="site-header" id="inicio">
+      <a class="brand" href="#inicio" aria-label="Terra Nobre, página inicial">
+        <svg aria-hidden="true" viewBox="0 0 52 52"><path d="M5 39c10-2 13-11 20-24 3 13 11 23 22 25M12 32c11 2 19-4 27-15M25 15v30"/></svg>
+        <span><b>TERRA</b><em>NOBRE</em></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <a href="#imoveis">Imóveis</a>
+        <a href="#especialidades">Especialidades</a>
+        <a href="#sobre">Quem somos</a>
+      </nav>
+      <a class="header-contact" href="#contato">Fale conosco <span>↗</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menu">
+        <span></span><span></span>
+      </button>
+      <nav class="mobile-menu" id="mobile-menu" aria-label="Navegação móvel">
+        <a href="#imoveis">Imóveis</a>
+        <a href="#especialidades">Especialidades</a>
+        <a href="#sobre">Quem somos</a>
+        <a href="#contato">Fale conosco</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="eyebrow reveal">CURADORIA DE IMÓVEIS RURAIS</p>
+          <h1 class="reveal delay-1">Onde a terra<br /><i>encontra propósito.</i></h1>
+          <p class="hero-copy reveal delay-2">Fazendas, sítios e propriedades singulares, selecionadas com rigor para quem busca viver, produzir ou investir no campo.</p>
+        </div>
+        <div class="hero-scroll" aria-hidden="true"><span></span> EXPLORE</div>
+        <div class="hero-proof reveal delay-3">
+          <strong>Atendimento<br />consultivo</strong>
+          <span>Cada propriedade é analisada com olhar técnico e absoluto respeito à sua história.</span>
+        </div>
+      </section>
+
+      <section class="search-panel" aria-label="Busca de imóveis">
+        <form id="property-search">
+          <label class="search-field search-main">
+            <span>O que você procura?</span>
+            <div><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16 16 4 4"/></svg><input id="search-input" type="search" placeholder="Cidade, região ou característica" /></div>
+          </label>
+          <label class="search-field">
+            <span>Tipo de imóvel</span>
+            <select id="type-filter"><option value="all">Todos os tipos</option><option>Fazenda</option><option>Sítio</option><option>Chácara</option><option>Haras</option></select>
+          </label>
+          <label class="search-field">
+            <span>Faixa de valor</span>
+            <select id="price-filter"><option value="all">Qualquer valor</option><option value="to2">Até R$ 2 mi</option><option value="2to5">R$ 2 a 5 mi</option><option value="over5">Acima de R$ 5 mi</option></select>
+          </label>
+          <button class="search-button" type="submit"><span>Buscar imóveis</span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 14 0m-5-5 5 5-5 5"/></svg></button>
+        </form>
+      </section>
+
+      <section class="properties section" id="imoveis">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow dark">SELEÇÃO ESPECIAL</p>
+            <h2>Propriedades em destaque</h2>
+          </div>
+          <p>Uma curadoria de lugares que unem qualidade da terra, localização e potencial real.</p>
+        </div>
+        <div class="category-tabs" role="group" aria-label="Filtrar por categoria">
+          <button class="active" data-category="all">Todos <sup>06</sup></button>
+          <button data-category="Fazenda">Fazendas <sup>02</sup></button>
+          <button data-category="Sítio">Sítios <sup>02</sup></button>
+          <button data-category="Chácara">Chácaras <sup>01</sup></button>
+          <button data-category="Haras">Haras <sup>01</sup></button>
+          <button class="future" type="button" disabled>Aluguel <small>EM BREVE</small></button>
+        </div>
+        <div class="property-grid" id="property-grid" aria-live="polite"></div>
+        <div class="empty-state" id="empty-state" hidden>
+          <span>∿</span><h3>Nenhum imóvel encontrado</h3><p>Tente mudar a cidade, o tipo ou a faixa de valor.</p><button id="clear-filters" type="button">Limpar filtros</button>
+        </div>
+        <div class="section-action"><button class="outline-button" id="show-all" type="button">Ver todos os imóveis <span>↗</span></button></div>
+      </section>
+
+      <section class="specialties" id="especialidades">
+        <div class="specialties-intro">
+          <p class="eyebrow">NOSSO TERRITÓRIO</p>
+          <h2>Conhecimento que vai<br />além da <i>porteira.</i></h2>
+          <p>Entendemos que um imóvel rural é feito de muitas camadas. Nosso trabalho conecta documentação, vocação produtiva, acesso, recursos naturais e o projeto de vida de cada cliente.</p>
+          <a href="#contato">Converse com um especialista <span>↗</span></a>
+        </div>
+        <div class="specialty-list">
+          <article><span>01</span><div><h3>Fazendas produtivas</h3><p>Áreas para café, pecuária, agricultura e projetos de alto valor.</p></div><b>↗</b></article>
+          <article><span>02</span><div><h3>Refúgios de campo</h3><p>Sítios e chácaras para viver com privacidade, natureza e conforto.</p></div><b>↗</b></article>
+          <article><span>03</span><div><h3>Investimento em terra</h3><p>Análise criteriosa de localização, documentação e potencial patrimonial.</p></div><b>↗</b></article>
+          <article><span>04</span><div><h3>Propriedades equestres</h3><p>Haras, centros de treinamento e estruturas prontas para criação.</p></div><b>↗</b></article>
+        </div>
+      </section>
+
+      <section class="about section" id="sobre">
+        <div class="about-mark" aria-hidden="true">TN</div>
+        <div class="about-copy">
+          <p class="eyebrow dark">QUEM SOMOS</p>
+          <h2>Negociações conduzidas com <i>presença, critério e confiança.</i></h2>
+          <p>Somos uma equipe especializada na intermediação de imóveis rurais. Atuamos lado a lado com proprietários e compradores em todas as etapas — da primeira visita à conclusão segura do negócio.</p>
+          <p class="placeholder-note">Este texto é provisório e poderá ser substituído pela história real do corretor e da equipe.</p>
+          <div class="about-stats"><div><strong>+12</strong><span>anos de experiência*</span></div><div><strong>04</strong><span>especialistas*</span></div><div><strong>100%</strong><span>atendimento próximo</span></div></div>
+        </div>
+        <div class="about-card">
+          <div class="portrait-placeholder"><span>FOTO DO<br />CORRETOR</span></div>
+          <div><p>Corretor responsável</p><h3>Nome do Corretor</h3><span>CRECI 000000-F · Dados provisórios</span></div>
+        </div>
+      </section>
+
+      <section class="contact" id="contato">
+        <div>
+          <p class="eyebrow">ATENDIMENTO PERSONALIZADO</p>
+          <h2>Vamos encontrar o seu<br /><i>lugar no campo?</i></h2>
+        </div>
+        <a id="whatsapp-link" href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20gostaria%20de%20conhecer%20os%20im%C3%B3veis%20rurais." target="_blank" rel="noopener">Iniciar uma conversa <span>↗</span></a>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand footer-brand" href="#inicio"><svg aria-hidden="true" viewBox="0 0 52 52"><path d="M5 39c10-2 13-11 20-24 3 13 11 23 22 25M12 32c11 2 19-4 27-15M25 15v30"/></svg><span><b>TERRA</b><em>NOBRE</em></span></a>
+      <p>Imóveis rurais selecionados<br />com conhecimento e propósito.</p>
+      <div class="footer-links"><a href="#imoveis">Imóveis</a><a href="#sobre">Quem somos</a><a href="#contato">Contato</a><a href="#">Instagram ↗</a></div>
+      <div class="footer-bottom"><span>© 2026 Terra Nobre. Conteúdo demonstrativo.</span><span>CRECI 000000-F · Dados provisórios</span></div>
+    </footer>
+
+    <dialog class="property-modal" id="property-modal">
+      <button class="modal-close" type="button" aria-label="Fechar">×</button>
+      <img id="modal-image" src="" alt="" />
+      <div class="modal-content"><p id="modal-tag" class="eyebrow dark"></p><h2 id="modal-title"></h2><p id="modal-location" class="modal-location"></p><div id="modal-features" class="modal-features"></div><p id="modal-description"></p><div class="modal-footer"><strong id="modal-price"></strong><a id="modal-whatsapp" target="_blank" rel="noopener">Tenho interesse <span>↗</span></a></div></div>
+    </dialog>
+
+    <script src="script.js"></script>
+  </body>
+</html>
