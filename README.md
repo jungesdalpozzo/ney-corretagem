@@ -54,6 +54,21 @@ git push -u origin main
 
 O `.gitignore` já deixa de fora os originais pesados (o vídeo bruto tem 169 MB e o GitHub recusa arquivos acima de 100 MB).
 
+## Publicar na hospedagem Hostinger (hPanel) via GitHub
+
+O arquivo `.htaccess` na raiz faz o servidor entregar o conteúdo de `dist/` e bloqueia o acesso ao `.git` e aos arquivos internos.
+
+1. No hPanel, abra o site → **Gerenciador de Arquivos** → `public_html` e **apague tudo** que estiver lá (o deploy por Git exige a pasta vazia).
+2. No hPanel → **Avançado → GIT**:
+   - **Repositório:** `https://github.com/SEU-USUARIO/ney-corretagem.git` (repositório público)
+     ou `git@github.com:SEU-USUARIO/ney-corretagem.git` (privado: copie a chave SSH mostrada no hPanel e adicione em GitHub → Settings → Deploy keys)
+   - **Branch:** `main`
+   - **Diretório:** deixe em branco (instala em `public_html`)
+   - Clique em **Criar** e depois em **Implantar**.
+3. **Deploy automático (opcional):** no mesmo painel, ative *Implantação automática*, copie a URL do webhook e cole em GitHub → Settings → Webhooks → Add webhook.
+
+Daí em diante, cada `git push` publica o site.
+
 ## Publicar na VPS (Hostinger)
 
 ### Opção A — EasyPanel (recomendado)
