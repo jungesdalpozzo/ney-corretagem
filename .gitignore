@@ -1,0 +1,14 @@
+# Originais pesados (PNGs, vídeo bruto de 169 MB, capas editadas) — ficam só no computador
+originais/
+# Arquivos antigos e rascunhos de trabalho
+_arquivo/
+# Artefatos de outras ferramentas
+.sites-runtime/
+.openai/
+Claude outputs/
+# Sistema e dependências
+node_modules/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
