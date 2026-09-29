@@ -13,7 +13,21 @@
     <link rel="preload" href="assets/fonts/manrope-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="assets/fonts/fonts.css" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="imovel.css" />
+    <link rel="stylesheet" href="imovel.css?v=20260929b" />
+    <script>
+      /* Salvaguarda: nunca deixar a tela de abertura presa (rede lenta, erro de script, cache antigo). */
+      (function () {
+        var done = false;
+        function reveal() {
+          if (done) return; done = true;
+          var b = document.body; if (!b) return;
+          b.classList.add("is-ready");
+          setTimeout(function () { b.classList.remove("is-loading"); }, 900);
+        }
+        window.addEventListener("error", function () { setTimeout(reveal, 300); });
+        setTimeout(reveal, 4000);
+      })();
+    </script>
   </head>
   <body class="is-loading">
     <div class="curtain" aria-hidden="true">
@@ -185,7 +199,7 @@
 
     <div class="cursor" id="cursor" aria-hidden="true"><span>Ver</span></div>
 
-    <script src="data.js"></script>
-    <script src="imovel.js"></script>
+    <script src="data.js?v=20260929b"></script>
+    <script src="imovel.js?v=20260929b"></script>
   </body>
 </html>

@@ -78,8 +78,8 @@
   };
   const SORTS = {
     destaque: (a, b) => a._i - b._i,
-    "preco-asc": (a, b) => (a._price ?? Infinity) - (b._price ?? Infinity) || a._i - b._i,
-    "preco-desc": (a, b) => (b._price ?? -Infinity) - (a._price ?? -Infinity) || a._i - b._i,
+    "preco-asc": (a, b) => (a._price == null ? Infinity : a._price) - (b._price == null ? Infinity : b._price) || a._i - b._i,
+    "preco-desc": (a, b) => (b._price == null ? -Infinity : b._price) - (a._price == null ? -Infinity : a._price) || a._i - b._i,
     "area-desc": (a, b) => b._area - a._area || a._i - b._i,
     fotos: (a, b) => b.images.length - a.images.length,
     az: (a, b) => a.title.localeCompare(b.title, "pt-BR")
@@ -140,7 +140,7 @@
   };
   Object.entries(waLinks).forEach(([sel, msg]) => { const a = $(sel); if (a) a.href = wa(msg); });
   const chance = properties.find(p => CATS.campos(p));
-  if (chance && $("#chance-img")) $("#chance-img").src = chance.tour ? chance.tour.scenes.find(s => s.partial)?.src || chance.cover : chance.cover;
+  if (chance && $("#chance-img")) $("#chance-img").src = chance.tour ? (chance.tour.scenes.find(s => s.partial) || {}).src || chance.cover : chance.cover;
 
   /* ---------- Temporada ---------- */
   if (season) {

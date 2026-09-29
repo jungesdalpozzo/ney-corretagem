@@ -93,7 +93,7 @@
     const wait = Math.max(0, 1100 - (performance.now() - start));
     setTimeout(() => { document.body.classList.add("is-ready"); setTimeout(() => document.body.classList.remove("is-loading"), 900); }, reduced ? 0 : wait);
   };
-  if (hero.complete) go(); else { hero.addEventListener("load", go); hero.addEventListener("error", go); }
+  if (hero.complete) go(); else { hero.addEventListener("load", go); hero.addEventListener("error", go); setTimeout(go, 2500); }
   setTimeout(go, 2600);
 
   /* ---------- Revelações ---------- */
