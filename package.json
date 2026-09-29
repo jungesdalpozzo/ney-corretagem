@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Site da Ney Corretagem — imóveis rurais em Cunha-SP e região",
+  "description": "Portal dos Sonhos Capital Imobiliário — imóveis rurais em Cunha-SP e Campos Novos de Cunha",
   "scripts": {
     "dev": "node dev-server.mjs",
     "start": "node dev-server.mjs"

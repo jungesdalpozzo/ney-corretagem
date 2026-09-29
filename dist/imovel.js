@@ -11,7 +11,7 @@
   let lightboxOpen = false;
 
   /* ---------- Conteúdo ---------- */
-  document.title = `${p.title} · ${p.city} — Ney Corretagem`;
+  document.title = `${p.title} · ${p.city} — Portal dos Sonhos`;
   $("#curtain-title").textContent = p.title;
   const hero = $("#hero-img");
   hero.src = p.cover; hero.alt = `${p.title}, ${p.city}`;
@@ -31,7 +31,7 @@
     $("#hero-media").appendChild(loop);
     loop.play().catch(() => {});
   }
-  if (p.video) {
+  if (p.video && p.video.src) {
     const reel = $("#video"), rv = $("#reel-video");
     reel.hidden = false;
     rv.poster = p.video.poster; rv.src = p.video.src;
@@ -47,7 +47,7 @@
   $("#historia").innerHTML = p.chapters.map((c, i) => {
     const label = (p.images.find(im => im.file === c.img) || {}).label || c.t;
     return `<article class="chapter">
-      <figure class="ch-media" data-img="${esc(c.img)}"><div class="ch-par"><img src="${p.img(c.img)}" alt="${esc(label)}" loading="lazy"></div><figcaption>${esc(label)}</figcaption></figure>
+      <figure class="ch-media${/simula/i.test(label) ? " sim" : ""}" data-img="${esc(c.img)}"><div class="ch-par"><img src="${p.img(c.img)}" alt="${esc(label)}" loading="lazy"></div><figcaption>${esc(label)}</figcaption></figure>
       <div class="ch-copy"><span class="ch-num" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
         <p class="eyebrow reveal">${esc(c.k)}</p><h3 class="reveal d1">${esc(c.t)}</h3><p class="reveal d2">${esc(c.x)}</p></div>
     </article>`;
@@ -58,7 +58,7 @@
   $("#quote-text").textContent = p.quote.t;
 
   $("#gallery-count").textContent = p.images.length;
-  $("#gallery-track").innerHTML = p.images.map((im, i) => `<button type="button" class="g-item" data-i="${i}" aria-label="Ampliar: ${esc(im.label)}"><img src="${im.src}" alt="${esc(im.label)}" loading="lazy"><figcaption><span>${esc(im.label)}</span><b>${String(i + 1).padStart(2, "0")}</b></figcaption></button>`).join("");
+  $("#gallery-track").innerHTML = p.images.map((im, i) => `<button type="button" class="g-item${/simula/i.test(im.label) ? " sim" : ""}" data-i="${i}" aria-label="Ampliar: ${esc(im.label)}"><img src="${im.src}" alt="${esc(im.label)}" loading="lazy"><figcaption><span>${esc(im.label)}</span><b>${String(i + 1).padStart(2, "0")}</b></figcaption></button>`).join("");
 
   $("#highlights").innerHTML = p.highlights.map(h => `<li class="reveal">${esc(h)}</li>`).join("");
 
@@ -188,6 +188,54 @@
   track.querySelectorAll("img").forEach(im => im.addEventListener("load", measure, { once: true }));
   measure();
 
+  /* ---------- Tour 360° (Pannellum) ---------- */
+  if (p.tour && p.tour.scenes && p.tour.scenes.length) {
+    const sec = $("#tour"), stage = $("#tour-viewer"), cover = $("#tour-cover"), tabs = $("#tour-scenes");
+    sec.hidden = false; $("#nav-tour").hidden = false;
+    $("#tour-text").textContent = p.tour.text;
+    cover.style.backgroundImage = `url("${p.cover}")`;
+    tabs.innerHTML = p.tour.scenes.map((s, i) => `<button type="button" role="tab" data-id="${s.id}" aria-selected="${i === 0}">${String(i + 1).padStart(2, "0")} · ${esc(s.title)}</button>`).join("");
+    let viewer = null, loading = null;
+    const loadLib = () => loading || (loading = new Promise((res, rej) => {
+      const css = document.createElement("link"); css.rel = "stylesheet"; css.href = "assets/vendor/pannellum/pannellum.css"; document.head.appendChild(css);
+      const js = document.createElement("script"); js.src = "assets/vendor/pannellum/pannellum.js"; js.onload = res; js.onerror = rej; document.head.appendChild(js);
+    }));
+    const scenes = {};
+    const rad = d => d * Math.PI / 180, deg = r => r * 180 / Math.PI;
+    // hfov máximo para que um panorama parcial preencha a tela na vertical
+    const fitHfov = vaov => deg(2 * Math.atan(Math.tan(rad(vaov * 0.9 / 2)) * stage.clientWidth / Math.max(stage.clientHeight, 1)));
+    p.tour.scenes.forEach(s => {
+      scenes[s.id] = Object.assign({ type: "equirectangular", panorama: s.src, title: s.title, preview: s.preview, yaw: s.yaw || 0, pitch: s.pitch || 0, hfov: s.partial ? 80 : 100 },
+        s.partial ? { haov: s.haov || 360, vaov: s.vaov || 180, vOffset: s.vOffset || 0, minYaw: -(s.haov || 360) / 2, maxYaw: (s.haov || 360) / 2, minPitch: (s.vOffset || 0) - (s.vaov || 180) / 2, maxPitch: (s.vOffset || 0) + (s.vaov || 180) / 2 } : Object.assign({ maxPitch: s.maxPitch == null ? 60 : s.maxPitch }, s.minPitch == null ? {} : { minPitch: s.minPitch }));
+      if (s.hotspots) scenes[s.id].hotSpots = s.hotspots.map(h => ({
+        pitch: h.pitch, yaw: h.yaw, cssClass: h.below ? "pds-hs below" : "pds-hs",
+        createTooltipFunc: (div, label) => { const t = document.createElement("span"); t.textContent = label; div.appendChild(t); div.setAttribute("aria-label", label); },
+        createTooltipArgs: h.label
+      }));
+      if (s.partial) { const f = Math.min(100, fitHfov(s.vaov || 180)); Object.assign(scenes[s.id], { hfov: Math.min(70, f), maxHfov: f, minHfov: Math.min(30, f * .6) }); }
+    });
+    const select = id => tabs.querySelectorAll("button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.id === id)));
+    async function start(id) {
+      await loadLib();
+      if (!viewer) {
+        viewer = window.pannellum.viewer(stage, {
+          default: { firstScene: id || p.tour.scenes[0].id, autoLoad: true, sceneFadeDuration: 900, autoRotate: reduced ? 0 : -1.6, autoRotateInactivityDelay: 4000,
+            compass: false, showControls: true, showZoomCtrl: true, showFullscreenCtrl: true, mouseZoom: false, keyboardZoom: true, minHfov: 40, maxHfov: 120,
+            strings: { loadingLabel: "Carregando…", loadButtonLabel: "Clique para carregar", bylineLabel: "", genericWebGLError: "Seu navegador não conseguiu exibir o 360°.", noPanoramaError: "Panorama não encontrado." } },
+          scenes
+        });
+        viewer.on("scenechange", select);
+        viewer.on("mousedown", () => $("#tour-hint").classList.add("gone"));
+        viewer.on("touchstart", () => $("#tour-hint").classList.add("gone"));
+        sec.classList.add("live");
+      } else if (id) viewer.loadScene(id);
+      if (id) select(id);
+    }
+    $("#tour-start").addEventListener("click", () => start());
+    tabs.addEventListener("click", e => { const b = e.target.closest("button"); if (b) start(b.dataset.id); });
+    new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { loadLib(); o.disconnect(); } }), { rootMargin: "600px" }).observe(sec);
+  }
+
   /* ---------- Lightbox ---------- */
   const lb = $("#lightbox"), lbImg = $("#lb-img");
   let cur = 0;
@@ -260,4 +308,26 @@
     setTimeout(() => { location.href = a.href; }, 750);
   }));
   addEventListener("pageshow", e => { if (e.persisted) { document.body.classList.add("is-ready"); document.body.classList.remove("is-loading"); const c = document.querySelector(".curtain"); c.style.transform = ""; c.style.transition = ""; } });
+})();
+
+/* ---------- Barra de ação fixa no celular (UX mobile-first) ---------- */
+(() => {
+  const params = new URLSearchParams(location.search);
+  const list = (window.NEY && window.NEY.properties) || [];
+  const p = list.find(x => x.slug === params.get("id")) || list[0];
+  if (!p) return;
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const dock = document.createElement("div");
+  dock.className = "dock"; dock.setAttribute("role", "region"); dock.setAttribute("aria-label", "Ações rápidas");
+  const visit = p.mode === "Temporada" ? "Reservar" : "Visitar";
+  dock.innerHTML = `<div class="dock-price"><small>${esc(p.priceLabel)}</small><strong>${esc(p.price)}</strong></div>
+    <a class="dock-visit" href="#contato">${visit}</a>
+    <a class="dock-wa" href="${p.whatsappUrl()}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>WhatsApp</a>`;
+  document.body.appendChild(dock);
+  const contact = document.getElementById("contato");
+  let contactVisible = false;
+  if (contact && "IntersectionObserver" in window) new IntersectionObserver(es => { contactVisible = es[0].isIntersecting; update(); }, { threshold: .15 }).observe(contact);
+  function update() { dock.classList.toggle("show", scrollY > innerHeight * .55 && !contactVisible); }
+  addEventListener("scroll", update, { passive: true });
+  update();
 })();

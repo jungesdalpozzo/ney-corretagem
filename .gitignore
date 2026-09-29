@@ -12,3 +12,5 @@ node_modules/
 Thumbs.db
 desktop.ini
 *.log
+# Arquivos descartáveis aguardando exclusão manual
+_para-apagar/

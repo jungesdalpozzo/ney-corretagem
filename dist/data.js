@@ -1,4 +1,4 @@
-/* Base de dados dos imóveis — Ney Corretagem.
+/* Base de dados dos imóveis — Portal dos Sonhos Capital Imobiliário.
    Todos os fatos vêm das apresentações originais do corretor. */
 (function () {
   const WHATSAPP = "5512996586892";
@@ -106,6 +106,318 @@
         ["13-balanca-curral.jpg", "Balança para manejo do gado"],
         ["14-curral-de-gado.jpg", "Curral e centro de manejo"],
         ["17-tanque-de-leite.jpg", "Resfriador de leite de 1.800 litros"]
+      ]
+    },
+    {
+      slug: "sitio-paiol-13-alqueires", id: "SP-07", type: "Sítio", mode: "Venda",
+      title: "Sítio do Paiol", city: "Cunha-SP", region: "14 km do centro",
+      cover: "01-casa-sede-entre-os-morros.jpg", alt: "02-vale-com-a-sede.jpg",
+      cardFeatures: [["area", "13,5 alqueires (~32,7 ha)"], ["leaf", "Córrego e 2 nascentes"], ["leaf", "Casa sede e paiol"]],
+      priceLabel: "Valor pedido", price: "R$ 1,35 milhão",
+      kicker: "Venda · 13,5 alqueires em Cunha-SP",
+      tagline: ["Cinquenta e dois anos", "de cuidado com a terra."],
+      subtitle: "Treze alqueires e meio com córrego, duas nascentes, mata nativa, casa sede e paiol, a 14 km de Cunha. Escriturado.",
+      intro: "Há terras que passam de mão em mão. Esta ficou mais de meio século com o mesmo dono: são 52 anos morando e cuidando do córrego, das nascentes e da mata. Agora, o Sítio do Paiol está à venda.",
+      stats: [
+        { v: "13,5", l: "alqueires (~32,7 ha)" },
+        { v: "2", l: "nascentes, mais água de mina" },
+        { v: "3", l: "alqueires de mata nativa" },
+        { v: "3", l: "capineiras para o gado" },
+        { v: "52", l: "anos com o mesmo dono" }
+      ],
+      chapters: [
+        { k: "Água", t: "Um córrego, duas nascentes e água de mina.", img: "02-vale-com-a-sede.jpg",
+          x: "Um córrego atravessa a propriedade e duas nascentes completam o abastecimento. A casa é servida por água de mina, direto da terra. No campo, não existe riqueza maior." },
+        { k: "Mata", t: "Três alqueires de mata nativa.", img: "15-araucarias-e-pastagem.jpg",
+          x: "Dos treze alqueires e meio, três são de mata nativa preservada. Sombra, nascente protegida e a paisagem que emoldura o vale." },
+        { k: "Sede", t: "A casa sede e o paiol.", img: "04-casa-sede-e-varanda.jpg",
+          x: "A casa sede, com varanda cercada de jardim, e o paiol ficam entre árvores frutíferas: bananeiras, pitaias e mangueiras. Uma estrutura de sítio de verdade, construída e mantida por quem vive ali há 52 anos." },
+        { k: "Casa", t: "Fogão a lenha e casa arrumada.", img: "08-fogao-a-lenha.jpg",
+          x: "Por dentro, a casa tem sala, cozinha, quarto e um fogão a lenha de azulejo branco, o coração de qualquer casa de roça. Tudo simples, limpo e cuidado, pronto para receber a próxima família." },
+        { k: "Produção", t: "Capineiras, horta e curral.", img: "12-horta.jpg",
+          x: "São três capineiras que garantem ração para o gado, curral de madeira, horta cercada perto da casa, pastagens espalhadas pelos morros e estrada interna cortando a propriedade. Tudo com escritura." }
+      ],
+      quote: { img: "03-sede-e-estrada-interna.jpg", t: "Meio século com o mesmo dono. Escritura em dia." },
+      tour: {
+        text: "Imagens aéreas em 360° feitas sobre o sítio. Arraste para olhar em volta, use o zoom e troque de ponto de vista.",
+        scenes: [
+          { id: "sede", title: "Sobre a casa sede", src: "assets/imoveis/sitio-paiol-13-alqueires/360/sobre-a-sede.jpg", preview: "assets/imoveis/sitio-paiol-13-alqueires/360/sobre-a-sede-previa.jpg", yaw: -75, pitch: -22, minPitch: -82 },
+          { id: "vale", title: "Sobre o vale", src: "assets/imoveis/sitio-paiol-13-alqueires/360/sobre-o-vale.jpg", preview: "assets/imoveis/sitio-paiol-13-alqueires/360/sobre-o-vale-previa.jpg", yaw: 30, pitch: -28 },
+          { id: "serra", title: "Panorama da serra", src: "assets/imoveis/sitio-paiol-13-alqueires/360/panorama-da-serra.jpg", preview: "assets/imoveis/sitio-paiol-13-alqueires/360/panorama-da-serra-previa.jpg", yaw: 0, pitch: -4, partial: true, haov: 188.2, vaov: 48.9, vOffset: -0.42 }
+        ]
+      },
+      highlights: [
+        "13,5 alqueires com escritura",
+        "Córrego atravessando a propriedade",
+        "Duas nascentes e água de mina",
+        "Três alqueires de mata nativa",
+        "Casa sede com varanda, sala, cozinha e fogão a lenha",
+        "Paiol e curral de madeira",
+        "Horta e jardim junto à casa",
+        "Três capineiras para ração do gado",
+        "Frutíferas: banana, pitaia e manga",
+        "Um único dono há 52 anos"
+      ],
+      location: {
+        title: "A 14 km de Cunha.",
+        text: "No município de Cunha-SP, em meio aos morros da serra. O acesso é por um atalho em estrada de terra, sem asfalto. A localização exata é informada no agendamento da visita.",
+        img: "19-panorama-da-serra.jpg",
+        points: [["Cunha", "14 km", "Pelo atalho, em estrada de terra."], ["Acesso", "Sem asfalto", "Estrada de terra até a propriedade."], ["Visita", "Ponto exato", "Combinado no agendamento."]]
+      },
+      cta: { title: ["Meio século de história", "à espera do próximo dono."], text: "Fale com o Ney, tire suas dúvidas e marque um dia para caminhar pelo Sítio do Paiol.", button: "Agendar visita" },
+      whatsapp: "Olá Ney! Quero saber mais sobre o Sítio do Paiol, de 13,5 alqueires em Cunha.",
+      gallery: [
+        ["01-casa-sede-entre-os-morros.jpg", "Casa sede entre os morros"],
+        ["02-vale-com-a-sede.jpg", "Vale com a sede"],
+        ["03-sede-e-estrada-interna.jpg", "Sede e estrada interna"],
+        ["04-casa-sede-e-varanda.jpg", "Casa sede e varanda"],
+        ["05-varanda.jpg", "Varanda"],
+        ["06-sala.jpg", "Sala"],
+        ["07-cozinha.jpg", "Cozinha"],
+        ["08-fogao-a-lenha.jpg", "Fogão a lenha"],
+        ["09-quarto.jpg", "Quarto"],
+        ["10-corredor.jpg", "Corredor"],
+        ["11-comodo-amplo.jpg", "Cômodo amplo"],
+        ["12-horta.jpg", "Horta"],
+        ["13-jardim-e-encosta.jpg", "Jardim e encosta"],
+        ["14-orquideas-na-arvore.jpg", "Orquídeas na árvore"],
+        ["15-araucarias-e-pastagem.jpg", "Araucárias e pastagem"],
+        ["16-curral-no-vale.jpg", "Curral no vale"],
+        ["17-curral-de-madeira.jpg", "Curral de madeira"],
+        ["18-arvore-frondosa.jpg", "Árvore frondosa"],
+        ["19-panorama-da-serra.jpg", "Panorama da serra"]
+      ]
+    },
+    {
+      slug: "sitio-campos-novos-12-alqueires", id: "CN-08", type: "Sítio", mode: "Venda",
+      title: "Sítio Campos Novos", city: "Cunha-SP", region: "Entre Taperinha e Ponte Nova",
+      zona: "Campos Novos de Cunha",
+      cover: "01-vale-e-mata-nativa.jpg", alt: "02-pastagem-nativa-e-araucarias.jpg",
+      video: { loop: "assets/imoveis/sitio-campos-novos-12-alqueires/video/loop.mp4", poster: "assets/imoveis/sitio-campos-novos-12-alqueires/video/poster.jpg" },
+      cardFeatures: [["area", "12 alqueires (~29 ha)"], ["leaf", "3 nascentes e riacho"], ["leaf", "Sem agrotóxico, nunca"]],
+      priceLabel: "Valor", price: "Sob consulta",
+      kicker: "Venda · 12 alqueires entre Cunha e Silveiras",
+      tagline: ["Terra limpa,", "do jeito que a natureza fez."],
+      subtitle: "Doze alqueires de pastagem nativa, três nascentes, riacho e mata, onde nunca se usou nenhum tipo de agrotóxico.",
+      intro: "Há terras que foram forçadas a produzir e terras que foram respeitadas. Aqui, nunca se jogou nenhum tipo de agrotóxico. A pastagem é nativa, sem braquiária, o riacho corre por dentro da propriedade e três nascentes brotam entre os morros.",
+      stats: [
+        { v: "12", l: "alqueires (~29 ha)" },
+        { v: "3", l: "nascentes" },
+        { v: "2", l: "hectares de mata nativa" },
+        { v: "Zero", l: "agrotóxico, desde sempre" },
+        { v: "36", l: "km de Cunha" }
+      ],
+      chapters: [
+        { k: "Água", t: "Três nascentes e um riacho.", img: "03-riacho.jpg",
+          x: "Três nascentes e um pequeno riacho que passa por dentro da propriedade garantem água entre os morros. Uma terra onde a água ainda corre do jeito que sempre correu." },
+        { k: "Terra", t: "Nunca um agrotóxico.", img: "02-pastagem-nativa-e-araucarias.jpg",
+          x: "Em toda a história da propriedade, nunca foi usado nenhum tipo de agrotóxico. Apenas uma parte do terreno é cultivada, com milho. O restante é pastagem nativa, de grama, sem braquiária." },
+        { k: "Mata", t: "Dois hectares de mata nativa.", img: "01-vale-e-mata-nativa.jpg",
+          x: "Dois hectares de mata nativa preservada completam a paisagem, com os morros e a serra ao fundo. Um sítio para quem quer produzir de forma limpa, criar ou simplesmente viver perto da natureza." }
+      ],
+      quote: { img: "10-vista-para-a-serra.jpg", t: "Terra limpa, água limpa, pastagem nativa." },
+      tour: {
+        text: "Imagens aéreas feitas sobre o sítio: um 360° completo e um panorama de 190° da serra, com a casa sede e a entrada da propriedade marcadas. Arraste para olhar em volta e troque de ponto de vista.",
+        scenes: [
+          { id: "sitio", title: "360° sobre o sítio", src: "assets/imoveis/sitio-campos-novos-12-alqueires/360/panorama-360.jpg", preview: "assets/imoveis/sitio-campos-novos-12-alqueires/360/panorama-360-previa.jpg", yaw: 60, pitch: -12,
+            hotspots: [{ yaw: 67.1, pitch: -17.4, label: "Casa sede", below: true }, { yaw: 63.6, pitch: -13.1, label: "Entrada da propriedade" }] },
+          { id: "serra", title: "Panorama da serra", src: "assets/imoveis/sitio-campos-novos-12-alqueires/360/panorama-180.jpg", preview: "assets/imoveis/sitio-campos-novos-12-alqueires/360/panorama-180-previa.jpg", yaw: -14, pitch: -6, partial: true, haov: 190.0, vaov: 48.4, vOffset: -0.13,
+            hotspots: [{ yaw: -25.4, pitch: -17.4, label: "Casa sede", below: true }, { yaw: -28.9, pitch: -13.0, label: "Entrada da propriedade" }] }
+        ]
+      },
+      highlights: [
+        "12 alqueires, cerca de 29 hectares",
+        "Três nascentes",
+        "Pequeno riacho passando por dentro da propriedade",
+        "Dois hectares de mata nativa",
+        "Nunca foi usado nenhum tipo de agrotóxico",
+        "Pastagem nativa de grama, sem braquiária",
+        "Parte do terreno cultivada com milho",
+        "Casa sede e entrada marcadas no tour 360°"
+      ],
+      location: {
+        title: "Entre a Taperinha e a Ponte Nova.",
+        text: "Na região de Cunha-SP, entre o bairro da Taperinha e a Ponte Nova, a 36 km de Cunha e a 28 km de Silveiras. A localização exata é informada no agendamento da visita.",
+        img: "08-morros-e-serra.jpg",
+        points: [["Cunha", "36 km", "Até o centro de Cunha."], ["Silveiras", "28 km", "Até o centro de Silveiras."], ["Visita", "Ponto exato", "Combinado no agendamento."]]
+      },
+      cta: { title: ["Terra que nunca", "conheceu veneno."], text: "Fale com o Ney, tire suas dúvidas e marque um dia para caminhar pelo Sítio Campos Novos.", button: "Agendar visita" },
+      whatsapp: "Olá Ney! Quero saber mais sobre o Sítio Campos Novos, de 12 alqueires.",
+      gallery: [
+        ["01-vale-e-mata-nativa.jpg", "Vale e mata nativa"],
+        ["02-pastagem-nativa-e-araucarias.jpg", "Pastagem nativa e araucárias"],
+        ["03-riacho.jpg", "Riacho"],
+        ["04-casa-e-cerca-de-madeira.jpg", "Casa e cerca de madeira"],
+        ["05-casa-vista-do-alto.jpg", "Casa vista do alto"],
+        ["06-casa-entre-as-pastagens.jpg", "Casa entre as pastagens"],
+        ["07-rancho-de-madeira.jpg", "Rancho de madeira"],
+        ["08-morros-e-serra.jpg", "Morros e serra"],
+        ["09-vale-e-mata.jpg", "Vale e mata"],
+        ["10-vista-para-a-serra.jpg", "Vista para a serra"]
+      ]
+    },
+    {
+      slug: "lote-campos-novos-1", id: "LT-09", type: "Lote", mode: "Venda",
+      title: "Lote em Campos Novos", city: "Campos Novos de Cunha", region: "Cunha-SP",
+      zona: "Campos Novos de Cunha",
+      cover: "02-lote-visto-do-alto.jpg", alt: "03-medidas-do-lote.jpg",
+      cardFeatures: [["area", "8,62 × 16,84 × 9,57 × 22,97 m"], ["leaf", "Água e esgoto ligados"], ["leaf", "Escriturado e desmembrado"]],
+      priceLabel: "Valor", price: "R$ 75 mil",
+      kicker: "Venda · Lote pronto para construir",
+      tagline: ["O primeiro traço", "da sua casa na serra."],
+      subtitle: "Lote escriturado e desmembrado em Campos Novos de Cunha, com água e esgoto já ligados e nenhuma pendência de família. R$ 75 mil.",
+      intro: "Todo projeto de casa começa com a mesma pergunta: o terreno está em ordem? Aqui, a resposta já vem pronta. Escritura, desmembramento, água e esgoto ligados, e nenhuma pendência de família. É escolher o projeto e começar a obra.",
+      stats: [
+        { v: "75", l: "mil reais" },
+        { v: "Escritura", l: "lote escriturado e desmembrado" },
+        { v: "Ligados", l: "água e esgoto" },
+        { v: "Zero", l: "pendência de família" }
+      ],
+      chapters: [
+        { k: "Documentação", t: "Escriturado, desmembrado e sem pendência.", img: "03-medidas-do-lote.jpg",
+          x: "O lote já é escriturado e desmembrado, com matrícula própria, e não tem nenhuma pendência familiar. Você compra, registra e constrói com tranquilidade." },
+        { k: "Infraestrutura", t: "Água e esgoto já ligados.", img: "02-lote-visto-do-alto.jpg",
+          x: "As ligações de água e esgoto já estão feitas. Menos burocracia, menos custo e menos tempo entre a compra e o primeiro tijolo." },
+        { k: "Possibilidade", t: "Imagine a sua casa aqui.", img: "04-simulacao-ilustrativa.jpg",
+          x: "A imagem é uma simulação ilustrativa feita por computador, apenas para mostrar o potencial do terreno: uma casa térrea com garagem e jardim. O lote é vendido sem construção, e o projeto final segue as regras de obra do município." }
+      ],
+      quote: { img: "01-acesso-ao-lote.jpg", t: "Terreno em ordem, obra sem surpresa." },
+      highlights: [
+        "Escriturado e desmembrado",
+        "Água ligada",
+        "Esgoto ligado",
+        "Sem pendências de família",
+        "Medidas: 8,62 m, 16,84 m, 9,57 m e 22,97 m",
+        "Em Campos Novos de Cunha, por R$ 75 mil"
+      ],
+      location: {
+        title: "Em Campos Novos de Cunha.",
+        text: "No distrito de Campos Novos de Cunha, município de Cunha-SP. A localização exata é informada no agendamento da visita.",
+        img: "01-acesso-ao-lote.jpg",
+        points: [["Distrito", "Campos Novos", "Campos Novos de Cunha."], ["Município", "Cunha-SP", "Serra, interior de São Paulo."], ["Visita", "Ponto exato", "Combinado no agendamento."]]
+      },
+      cta: { title: ["Seu terreno", "está esperando."], text: "Fale com o Ney para ver o lote pessoalmente e tirar as dúvidas sobre a documentação.", button: "Agendar visita" },
+      whatsapp: "Olá Ney! Tenho interesse no lote de R$ 75 mil em Campos Novos de Cunha.",
+      gallery: [
+        ["02-lote-visto-do-alto.jpg", "Lote visto do alto"],
+        ["03-medidas-do-lote.jpg", "Medidas do lote"],
+        ["01-acesso-ao-lote.jpg", "Acesso ao lote"],
+        ["04-simulacao-ilustrativa.jpg", "Simulação ilustrativa de uma casa no lote (não incluída)"]
+      ]
+    },
+    {
+      slug: "lote-campos-novos-2", id: "LT-10", type: "Lote", mode: "Venda",
+      title: "Lote no centro de Campos Novos", city: "Campos Novos de Cunha", region: "Centro do distrito",
+      zona: "Campos Novos de Cunha",
+      cover: "01-lote-visto-do-alto.jpg", alt: "05-lote-visto-da-rua.jpg",
+      cardFeatures: [["leaf", "Centro do distrito"], ["leaf", "Água, luz e esgoto ligados"], ["area", "Rua calçada"]],
+      priceLabel: "Valor", price: "R$ 75 mil",
+      kicker: "Venda · Lote no centro do distrito",
+      tagline: ["No centro de Campos Novos,", "com tudo ligado."],
+      subtitle: "Lote no centro do distrito de Campos Novos de Cunha, em rua calçada, com água, luz e esgoto já ligados. R$ 75 mil.",
+      intro: "Morar na serra sem abrir mão da praticidade: este lote fica no centro de Campos Novos de Cunha, a poucos passos do que o distrito oferece. Rua calçada, vizinhança formada e as ligações já feitas. É chegar e começar a obra.",
+      stats: [
+        { v: "75", l: "mil reais" },
+        { v: "Centro", l: "do distrito de Campos Novos" },
+        { v: "Ligados", l: "água, luz e esgoto" },
+        { v: "Calçada", l: "rua de acesso" }
+      ],
+      chapters: [
+        { k: "Localização", t: "No coração do distrito.", img: "04-rua-calcada-no-centro.jpg",
+          x: "O lote fica no centro de Campos Novos de Cunha, em rua calçada, cercado por casas e com a serra no horizonte. Tudo o que o distrito oferece, a poucos passos de casa." },
+        { k: "Infraestrutura", t: "Água, luz e esgoto ligados.", img: "01-lote-visto-do-alto.jpg",
+          x: "As ligações de água, luz e esgoto já estão feitas. Menos burocracia, menos custo e menos tempo entre a compra e o primeiro tijolo." },
+        { k: "Possibilidade", t: "Imagine a sua casa aqui.", img: "06-simulacao-ilustrativa.jpg",
+          x: "A imagem é uma simulação ilustrativa feita por computador, apenas para mostrar o potencial do terreno. O lote é vendido sem construção, e o projeto final segue as regras de obra do município." }
+      ],
+      quote: { img: "05-lote-visto-da-rua.jpg", t: "Perto de tudo, com a serra na janela." },
+      highlights: [
+        "Centro do distrito de Campos Novos de Cunha",
+        "Água, luz e esgoto ligados",
+        "Rua calçada",
+        "Vizinhança formada",
+        "R$ 75 mil"
+      ],
+      location: {
+        title: "No centro de Campos Novos de Cunha.",
+        text: "No centro do distrito de Campos Novos de Cunha, município de Cunha-SP. A localização exata é informada no agendamento da visita.",
+        img: "02-lote-e-rua-de-acesso.jpg",
+        points: [["Distrito", "Centro", "Campos Novos de Cunha."], ["Município", "Cunha-SP", "Serra, interior de São Paulo."], ["Visita", "Ponto exato", "Combinado no agendamento."]]
+      },
+      cta: { title: ["Perto de tudo,", "pronto para construir."], text: "Fale com o Ney para ver o lote pessoalmente, conhecer a rua e tirar suas dúvidas.", button: "Agendar visita" },
+      whatsapp: "Olá Ney! Tenho interesse no lote de R$ 75 mil no centro de Campos Novos de Cunha.",
+      gallery: [
+        ["01-lote-visto-do-alto.jpg", "Lote visto do alto"],
+        ["02-lote-e-rua-de-acesso.jpg", "Lote e rua de acesso"],
+        ["03-lote-e-vizinhanca.jpg", "Lote e vizinhança"],
+        ["04-rua-calcada-no-centro.jpg", "Rua calçada no centro do distrito"],
+        ["05-lote-visto-da-rua.jpg", "Lote visto da rua"],
+        ["06-simulacao-ilustrativa.jpg", "Simulação ilustrativa de uma casa no lote (não incluída)"]
+      ]
+    },
+    {
+      slug: "sitio-bocaina", id: "BC-11", type: "Sítio", mode: "Venda",
+      title: "Sítio Bocaina", city: "Cunha-SP", region: "Junto ao bairro da Bocaina",
+      zona: "Campos Novos de Cunha",
+      cover: "01-casa-vista-aerea.jpg", alt: "08-vale-panoramico.jpg",
+      video: { src: "assets/imoveis/sitio-bocaina/video/sitio-bocaina.mp4", loop: "assets/imoveis/sitio-bocaina/video/loop.mp4", poster: "assets/imoveis/sitio-bocaina/video/poster.jpg", title: "O Sítio Bocaina visto do alto" },
+      cardFeatures: [["bed", "Casa e paiol"], ["leaf", "Energia elétrica"], ["area", "10 km de Campos Novos"]],
+      priceLabel: "Valor", price: "Sob consulta",
+      kicker: "Venda · Região de Campos Novos de Cunha",
+      tagline: ["A casa já está de pé.", "O resto é paisagem."],
+      subtitle: "Casa, paiol e energia elétrica num vale entre morros, mata e pastagem, a 10 km do distrito de Campos Novos, junto ao bairro da Bocaina.",
+      intro: "Quem procura terra no interior sabe o quanto custa começar do zero: levar energia, erguer a primeira parede, abrir caminho. No Sítio Bocaina, o começo já foi feito. A casa está de pé, a energia elétrica chegou, o paiol espera a colheita e a estrada passa ao lado. O que sobra para você é o vale, os morros e o silêncio.",
+      stats: [
+        { v: "1", l: "casa" },
+        { v: "1", l: "paiol" },
+        { v: "Com", l: "energia elétrica" },
+        { v: "10", l: "km do distrito de Campos Novos" }
+      ],
+      chapters: [
+        { k: "Casa", t: "O começo já foi feito.", img: "02-casa-lateral-e-quintal.jpg",
+          x: "A casa de telhado colonial fica num patamar de grama, com quintal aberto e caixa d'água ao lado. É o ponto de partida para quem quer chegar e já ter onde ficar, reformar no seu ritmo ou ampliar do seu jeito." },
+        { k: "Chegada", t: "Estrada na porta, luz na casa.", img: "06-morros-e-estrada.jpg",
+          x: "A estrada de terra contorna o morro e passa rente à propriedade, e a rede de energia elétrica já chega até a casa. Um paiol completa a estrutura para guardar a colheita, as ferramentas e o que mais o sítio pedir." },
+        { k: "Paisagem", t: "Um vale só de verde.", img: "07-mata-e-encosta.jpg",
+          x: "Em volta, morros de pastagem, uma encosta coberta de mata, eucaliptos no fundo do vale e araucárias no alto dos morros. É a paisagem da região de Campos Novos de Cunha, onde a terra ainda tem preço de interior." }
+      ],
+      quote: { img: "08-vale-panoramico.jpg", t: "Casa de pé, luz acesa e um vale inteiro pela janela." },
+      tour: {
+        text: "Imagens aéreas feitas sobre o sítio: um 360° completo, com a casa, a estrada e a mata marcadas, e um panorama de 200° do vale. Arraste para olhar em volta e troque de ponto de vista.",
+        scenes: [
+          { id: "sitio", title: "360° sobre o sítio", src: "assets/imoveis/sitio-bocaina/360/panorama-360.jpg", preview: "assets/imoveis/sitio-bocaina/360/panorama-360-previa.jpg", yaw: -4, pitch: -35, minPitch: -80,
+            hotspots: [{ yaw: 1.8, pitch: -63, label: "Casa" }, { yaw: -73.8, pitch: -53, label: "Estrada de acesso" }, { yaw: -7.2, pitch: -3.6, label: "Mata na encosta" }] },
+          { id: "vale", title: "Panorama do vale", src: "assets/imoveis/sitio-bocaina/360/panorama-180.jpg", preview: "assets/imoveis/sitio-bocaina/360/panorama-180-previa.jpg", yaw: 0, pitch: -6, partial: true, haov: 201.1, vaov: 45.8, vOffset: -0.39 }
+        ]
+      },
+      highlights: [
+        "Casa com telhado colonial",
+        "Paiol",
+        "Energia elétrica",
+        "Estrada de terra passando junto à propriedade",
+        "Vale entre morros de pastagem",
+        "Encosta com mata, eucaliptos e araucárias na paisagem",
+        "A 10 km do distrito de Campos Novos de Cunha",
+        "Junto ao bairro da Bocaina",
+        "Tour aéreo 360° e vídeo de drone"
+      ],
+      location: {
+        title: "Junto ao bairro da Bocaina.",
+        text: "Na região de Campos Novos de Cunha-SP, ao lado do bairro da Bocaina e a 10 km do distrito de Campos Novos. A área total e a localização exata são informadas no atendimento e no agendamento da visita.",
+        img: "03-estrada-e-vale.jpg",
+        points: [["Campos Novos", "10 km", "Até o distrito."], ["Bocaina", "Ao lado", "Bairro vizinho ao sítio."], ["Visita", "Ponto exato", "Combinado no agendamento."]]
+      },
+      cta: { title: ["Chegue, abra a janela", "e comece a morar."], text: "Fale com o Ney, peça a área total e as condições, e marque um dia para conhecer o Sítio Bocaina.", button: "Agendar visita" },
+      whatsapp: "Olá Ney! Quero saber mais sobre o Sítio Bocaina, perto de Campos Novos de Cunha.",
+      gallery: [
+        ["01-casa-vista-aerea.jpg", "Casa vista do alto"],
+        ["02-casa-lateral-e-quintal.jpg", "Casa e quintal"],
+        ["03-estrada-e-vale.jpg", "Estrada e vale"],
+        ["04-morros-e-pastagem.jpg", "Morros e pastagem"],
+        ["05-vale-e-mata.jpg", "Vale e mata"],
+        ["06-morros-e-estrada.jpg", "Morros e estrada"],
+        ["07-mata-e-encosta.jpg", "Mata e encosta"],
+        ["08-vale-panoramico.jpg", "Vale panorâmico"]
       ]
     },
     {

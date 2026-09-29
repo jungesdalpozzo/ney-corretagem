@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0d0f0c" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Ney Corretagem" />
+    <meta property="og:site_name" content="Portal dos Sonhos Capital Imobiliário" />
     <meta name="referrer" content="no-referrer" />
-    <title>Imóvel — Ney Corretagem</title>
-    <meta name="description" content="Imóveis rurais em Cunha-SP e região. Ney Corretagem." />
+    <title>Imóvel — Portal dos Sonhos Capital Imobiliário</title>
+    <meta name="description" content="Imóveis rurais em Cunha-SP e região. Portal dos Sonhos Capital Imobiliário." />
     <link rel="preload" href="assets/fonts/cormorant-garamond-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="assets/fonts/manrope-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="assets/fonts/fonts.css" />
@@ -18,7 +18,7 @@
   <body class="is-loading">
     <div class="curtain" aria-hidden="true">
       <div class="curtain-inner">
-        <span class="curtain-brand">NEY <em>CORRETAGEM</em></span>
+        <span class="curtain-brand">PORTAL DOS SONHOS <em>CAPITAL IMOBILIÁRIO</em></span>
         <span class="curtain-title" id="curtain-title"></span>
         <span class="curtain-line"><i></i></span>
       </div>
@@ -27,17 +27,18 @@
     <div class="progress" aria-hidden="true"><i id="progress"></i></div>
 
     <header class="bar" id="bar">
-      <a class="bar-brand" href="index.html#imoveis" aria-label="Voltar para todos os imóveis">
-        <svg aria-hidden="true" viewBox="0 0 64 64"><circle cx="32" cy="32" r="28" /><path d="M13 42 26 27l7 7 8-11 10 19" /><circle class="sun" cx="42" cy="18" r="2.6" /></svg>
-        <span><b>NEY</b><em>CORRETAGEM · CUNHA</em></span>
+      <a class="bar-brand" href="index.html#colecao" aria-label="Voltar para todos os imóveis">
+        <svg class="mark" aria-hidden="true" viewBox="0 0 64 64"><path class="arch" d="M13 57V29a19 19 0 0 1 38 0v28" /><path class="arch2" d="M19.5 57V30a12.5 12.5 0 0 1 25 0v27" /><path class="ridge" d="M19.5 49.5l6.5-7.5 4.5 4.5 5.5-8.5 8.5 10" /><path class="ground" d="M8 57h48" /><circle class="sun" cx="32" cy="29.5" r="3.2" /></svg>
+        <span><b>PORTAL DOS SONHOS</b><em>CAPITAL IMOBILIÁRIO</em></span>
       </a>
       <nav class="bar-nav" aria-label="Seções do imóvel">
         <a href="#historia">A experiência</a>
+        <a href="#tour" id="nav-tour" hidden>Tour 360°</a>
         <a href="#galeria">Galeria</a>
         <a href="#local">Localização</a>
       </nav>
       <div class="bar-actions">
-        <a class="bar-back" href="index.html#imoveis"><span aria-hidden="true">←</span> Todos os imóveis</a>
+        <a class="bar-back" href="index.html#colecao"><span aria-hidden="true">←</span> Todos os imóveis</a>
         <a class="bar-cta" id="bar-cta" href="#contato">Falar com o Ney</a>
       </div>
     </header>
@@ -64,6 +65,24 @@
       <section class="stats" id="stats" aria-label="Em números"></section>
 
       <section class="chapters" id="historia" aria-label="A experiência"></section>
+
+      <section class="tour" id="tour" hidden>
+        <div class="tour-head">
+          <div>
+            <p class="eyebrow">Tour 360°</p>
+            <h2>Esteja lá<br /><i>antes de ir.</i></h2>
+          </div>
+          <p id="tour-text"></p>
+        </div>
+        <div class="tour-stage">
+          <div class="tour-viewer" id="tour-viewer" aria-label="Visualizador 360° da propriedade"></div>
+          <div class="tour-cover" id="tour-cover">
+            <button type="button" id="tour-start"><span>360°</span><em>Iniciar o tour</em></button>
+          </div>
+          <div class="tour-scenes" id="tour-scenes" role="tablist" aria-label="Pontos de vista"></div>
+          <p class="tour-hint" id="tour-hint">Arraste para olhar em volta</p>
+        </div>
+      </section>
 
       <section class="reel" id="video" hidden>
         <div class="reel-copy">
@@ -149,7 +168,7 @@
     </main>
 
     <footer class="foot">
-      <span>© 2026 Ney Corretagem · Cunha-SP</span>
+      <span>© 2026 Portal dos Sonhos Capital Imobiliário · Cunha-SP</span>
       <span id="foot-note">Fotos reais com tratamento visual assistido por IA, sem alteração intencional das características dos imóveis. Medidas, características e documentação devem ser confirmadas na visita.</span>
     </footer>
 

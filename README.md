@@ -1,6 +1,6 @@
-# Ney Corretagem — site
+# Portal dos Sonhos Capital Imobiliário — site
 
-Site institucional e catálogo de imóveis rurais de **Valdinei Gonçalves (Ney)**, em Cunha-SP e região.
+Site institucional e catálogo de imóveis rurais da **Portal dos Sonhos Capital Imobiliário**, com o corretor **Valdinei Gonçalves (Ney)**, em Cunha-SP e região.
 Site 100% estático (HTML, CSS e JavaScript puros), sem dependências e sem etapa de build.
 
 ## Estrutura
@@ -46,7 +46,7 @@ Crie um repositório vazio no GitHub (ex.: `ney-corretagem`) e, dentro desta pas
 
 ```bash
 git add -A
-git commit -m "Site de luxo da Ney Corretagem"
+git commit -m "Site Portal dos Sonhos"
 git branch -M main
 git remote add origin https://github.com/SEU-USUARIO/ney-corretagem.git
 git push -u origin main

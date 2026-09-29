@@ -8,7 +8,7 @@
   const pad = n => String(n).padStart(2, "0");
   const forSale = properties.filter(p => p.mode === "Venda");
   const season = properties.find(p => p.mode === "Temporada");
-  const withVideo = properties.find(p => p.video);
+  const withVideo = properties.find(p => p.video && p.video.src);
 
   /* ---------- Hero ---------- */
   const slides = properties.slice(0, 6);
@@ -31,7 +31,7 @@
   $$("#hero-dots button").forEach((b, i) => b.addEventListener("click", () => showSlide(i)));
 
   /* ---------- Letreiro ---------- */
-  const words = ["Cunha-SP", "Serra do Mar", "Nascentes", "Serra da Mantiqueira", "Campos de Cunha", "Vale do Paraíba", "Altitude", "Serra da Bocaina"];
+  const words = ["Cunha-SP", "Serra do Mar", "Nascentes", "Serra da Mantiqueira", "Campos de Cunha", "Campos Novos de Cunha", "Vale do Paraíba", "Altitude", "Serra da Bocaina"];
   $("#marquee").innerHTML = [...words, ...words].map(w => `<span>${w}</span>`).join("");
 
   /* ---------- Manifesto ---------- */
@@ -39,37 +39,108 @@
   man.innerHTML = man.textContent.split(" ").map(w => `<span class="w">${esc(w)}</span>`).join(" ");
   const manWords = [...man.querySelectorAll(".w")];
 
-  /* ---------- Coleção ---------- */
-  function estate(p, i) {
-    const tags = [`<span>${esc(p.type)}</span>`];
-    if (p.mode === "Temporada") tags.push('<span class="gold">Temporada</span>');
-    if (p.video) tags.push('<span class="gold">Com vídeo</span>');
+  /* ---------- Coleção (vitrine em miniaturas) ---------- */
+  const num = s => parseFloat(String(s).replace(/\./g, "").replace(",", "."));
+  function priceValue(p) {
+    const s = (p.price || "").toLowerCase();
+    const m = s.match(/([\d.,]+)\s*(milh|mil\b)?/);
+    if (!/r\$/.test(s) || !m) return null;
+    const v = num(m[1]);
+    return m[2] === "milh" ? v * 1e6 : m[2] ? v * 1e3 : v;
+  }
+  function areaValue(p) {
+    const f = p.cardFeatures.map(([, t]) => t).join(" ");
+    const m = f.match(/([\d.,]+)\s*alqueires/i);
+    return m ? num(m[1]) : 0;
+  }
+  function card(p, i) {
+    const tags = [`<span>${esc(p.mode === "Temporada" ? "Temporada" : p.type)}</span>`];
+    if (p.tour) tags.push('<span class="gold">Tour 360°</span>');
+    if (p.video && p.video.src) tags.push('<span class="gold">Vídeo</span>');
     const facts = p.cardFeatures.map(([, t]) => `<li>${esc(t)}</li>`).join("");
-    return `<a class="estate" href="${p.url}" data-title="${esc(p.title)}" data-mode="${p.mode}">
-      <div class="estate-media"><div class="estate-par"><img class="a" src="${p.cover}" alt="${esc(p.title)}, ${esc(p.city)}" loading="lazy"><img class="b" src="${p.alt}" alt="" loading="lazy"></div>
-        <div class="estate-tags">${tags.join("")}</div><span class="estate-count">${p.images.length} fotos</span></div>
-      <div class="estate-copy">
-        <span class="estate-n reveal">N° ${pad(i + 1)}</span>
-        <p class="estate-kind reveal">${esc(p.kicker)}</p>
-        <h3 class="reveal d1">${esc(p.title)}</h3>
-        <p class="estate-place reveal d1">${esc(p.city)} · ${esc(p.region)}</p>
-        <ul class="estate-facts reveal d2">${facts}</ul>
-        <div class="estate-foot reveal d3"><div class="estate-price"><small>${esc(p.priceLabel)}</small><strong>${esc(p.price)}</strong></div><span class="estate-go">Descobrir <b>→</b></span></div>
+    return `<a class="card" href="${p.url}" data-title="${esc(p.title)}" style="--i:${i % 12}">
+      <div class="card-media"><img class="a" src="${p.coverThumb}" alt="${esc(p.title)}, ${esc(p.city)}" loading="lazy"><img class="b" src="${p.thumb(p.alt.split("/").pop())}" alt="" loading="lazy">
+        <div class="card-tags">${tags.join("")}</div><span class="card-count">${p.images.length} fotos</span></div>
+      <div class="card-body">
+        <p class="card-place">${[...new Set([p.zona || p.city, p.region])].map(esc).join(" · ")}</p>
+        <h3>${esc(p.title)}</h3>
+        <ul class="card-facts">${facts}</ul>
+        <div class="card-foot"><div><small>${esc(p.priceLabel)}</small><strong>${esc(p.price)}</strong></div><span class="card-go" aria-hidden="true">→</span></div>
       </div></a>`;
   }
-  let filter = "all";
+  const CATS = {
+    all: () => true,
+    sitios: p => p.type === "Sítio" && p.mode === "Venda",
+    fazendas: p => p.type === "Fazenda",
+    casas: p => p.type === "Casa" || p.mode === "Temporada",
+    lotes: p => p.type === "Lote",
+    campos: p => /Campos Novos/i.test(p.zona || "")
+  };
+  const SORTS = {
+    destaque: (a, b) => a._i - b._i,
+    "preco-asc": (a, b) => (a._price ?? Infinity) - (b._price ?? Infinity) || a._i - b._i,
+    "preco-desc": (a, b) => (b._price ?? -Infinity) - (a._price ?? -Infinity) || a._i - b._i,
+    "area-desc": (a, b) => b._area - a._area || a._i - b._i,
+    fotos: (a, b) => b.images.length - a.images.length,
+    az: (a, b) => a.title.localeCompare(b.title, "pt-BR")
+  };
+  properties.forEach((p, i) => { p._i = i; p._price = priceValue(p); p._area = areaValue(p); });
+  const norm = s => String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  const params = new URLSearchParams(location.search);
+  let filter = CATS[params.get("f")] ? params.get("f") : "all";
+  const toggles = new Set();
+  const qInput = $("#market-q"), sortSel = $("#market-sort");
   function renderEstates() {
-    const list = properties.filter(p => filter === "all" || p.mode === filter);
-    $("#estates").innerHTML = list.map(estate).join("");
+    const q = norm(qInput.value.trim());
+    const list = properties.filter(CATS[filter] || CATS.all)
+      .filter(p => !toggles.has("tour") || p.tour)
+      .filter(p => !toggles.has("video") || (p.video && p.video.src))
+      .filter(p => !toggles.has("price") || p._price != null)
+      .filter(p => !q || norm([p.title, p.type, p.city, p.region, p.zona, p.kicker, p.subtitle, ...p.cardFeatures.map(f => f[1])].join(" ")).includes(q))
+      .sort(SORTS[sortSel.value] || SORTS.destaque);
+    const grid = $("#estates");
+    grid.innerHTML = list.map(card).join("");
+    $("#market-empty").hidden = list.length > 0;
+    $("#market-count").textContent = `${list.length} ${list.length === 1 ? "imóvel encontrado" : "imóveis encontrados"}`;
     $$("#filters button").forEach(b => b.classList.toggle("on", b.dataset.f === filter));
-    $$(".estate").forEach(el => io.observe(el));
-    bindCursor();
-    collectParallax();
+    requestAnimationFrame(() => grid.classList.add("ready"));
+    $$(".card").forEach(el => io.observe(el));
   }
-  $("#c-all").textContent = pad(properties.length);
-  $("#c-venda").textContent = pad(forSale.length);
-  $("#c-temp").textContent = pad(properties.length - forSale.length);
+  $$("[data-count]").forEach(el => { el.textContent = pad(properties.filter(CATS[el.dataset.count] || CATS.all).length); });
+  $$(".path").forEach(b => {
+    const n = properties.filter(CATS[b.dataset.go] || CATS.all).length;
+    b.querySelector("em").innerHTML = `${pad(n)} ${n === 1 ? "disponível" : "disponíveis"} <i>→</i>`;
+  });
   $$("#filters button").forEach(b => b.addEventListener("click", () => { filter = b.dataset.f; renderEstates(); }));
+  $$(".market-toggles button").forEach(b => b.addEventListener("click", () => {
+    const on = !toggles.has(b.dataset.t);
+    on ? toggles.add(b.dataset.t) : toggles.delete(b.dataset.t);
+    b.setAttribute("aria-pressed", String(on));
+    renderEstates();
+  }));
+  let qTimer;
+  qInput.addEventListener("input", () => { clearTimeout(qTimer); qTimer = setTimeout(renderEstates, 120); });
+  sortSel.addEventListener("change", renderEstates);
+  $("#market-reset").addEventListener("click", () => {
+    filter = "all"; toggles.clear(); qInput.value = ""; sortSel.value = "destaque";
+    $$(".market-toggles button").forEach(b => b.setAttribute("aria-pressed", "false"));
+    renderEstates();
+  });
+  $$("[data-go]").forEach(b => b.addEventListener("click", () => {
+    filter = b.dataset.go; renderEstates();
+    $("#colecao").scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
+  }));
+
+  /* ---------- Atalhos de WhatsApp ---------- */
+  const waLinks = {
+    "#hero-wa": "Olá Ney! Vi o site e quero falar com um especialista em imóveis rurais em Cunha.",
+    "#paths-lote": "Olá Ney! Procuro um lote ou terreno em Cunha para construir. Quais opções você tem?",
+    "#chance-wa": "Olá Ney! Quero receber oportunidades de imóveis em Campos Novos de Cunha.",
+    "#seller-wa": "Olá Ney! Tenho um imóvel rural na região e gostaria de uma avaliação."
+  };
+  Object.entries(waLinks).forEach(([sel, msg]) => { const a = $(sel); if (a) a.href = wa(msg); });
+  const chance = properties.find(p => CATS.campos(p));
+  if (chance && $("#chance-img")) $("#chance-img").src = chance.tour ? chance.tour.scenes.find(s => s.partial)?.src || chance.cover : chance.cover;
 
   /* ---------- Temporada ---------- */
   if (season) {
@@ -105,7 +176,7 @@
 
   /* ---------- Revelações ---------- */
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .15, rootMargin: "0px 0px -6% 0px" });
-  $$(".reveal").forEach(el => io.observe(el));
+  $$(".reveal, .chance").forEach(el => io.observe(el));
 
   /* ---------- Rolagem ---------- */
   const nav = $("#nav"), progress = $("#progress"), floatWa = $("#float-wa"), seasonMedia = $(".season-media");
