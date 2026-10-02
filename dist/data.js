@@ -262,13 +262,13 @@
       zona: "Campos Novos de Cunha",
       cover: "02-lote-visto-do-alto.jpg", alt: "03-medidas-do-lote.jpg",
       cardFeatures: [["area", "8,62 × 16,84 × 9,57 × 22,97 m"], ["leaf", "Água e esgoto ligados"], ["leaf", "Escriturado e desmembrado"]],
-      priceLabel: "Valor", price: "R$ 75 mil",
+      priceLabel: "Valor", price: "R$ 55 mil",
       kicker: "Venda · Lote pronto para construir",
       tagline: ["O primeiro traço", "da sua casa na serra."],
-      subtitle: "Lote escriturado e desmembrado em Campos Novos de Cunha, com água e esgoto já ligados e nenhuma pendência de família. R$ 75 mil.",
+      subtitle: "Lote escriturado e desmembrado em Campos Novos de Cunha, com água e esgoto já ligados e nenhuma pendência de família. R$ 55 mil.",
       intro: "Todo projeto de casa começa com a mesma pergunta: o terreno está em ordem? Aqui, a resposta já vem pronta. Escritura, desmembramento, água e esgoto ligados, e nenhuma pendência de família. É escolher o projeto e começar a obra.",
       stats: [
-        { v: "75", l: "mil reais" },
+        { v: "55", l: "mil reais" },
         { v: "Escritura", l: "lote escriturado e desmembrado" },
         { v: "Ligados", l: "água e esgoto" },
         { v: "Zero", l: "pendência de família" }
@@ -288,7 +288,7 @@
         "Esgoto ligado",
         "Sem pendências de família",
         "Medidas: 8,62 m, 16,84 m, 9,57 m e 22,97 m",
-        "Em Campos Novos de Cunha, por R$ 75 mil"
+        "Em Campos Novos de Cunha, por R$ 55 mil"
       ],
       location: {
         title: "Em Campos Novos de Cunha.",
@@ -297,7 +297,7 @@
         points: [["Distrito", "Campos Novos", "Campos Novos de Cunha."], ["Município", "Cunha-SP", "Serra, interior de São Paulo."], ["Visita", "Ponto exato", "Combinado no agendamento."]]
       },
       cta: { title: ["Seu terreno", "está esperando."], text: "Fale com o Ney para ver o lote pessoalmente e tirar as dúvidas sobre a documentação.", button: "Agendar visita" },
-      whatsapp: "Olá Ney! Tenho interesse no lote de R$ 75 mil em Campos Novos de Cunha.",
+      whatsapp: "Olá Ney! Tenho interesse no lote de R$ 55 mil em Campos Novos de Cunha.",
       gallery: [
         ["02-lote-visto-do-alto.jpg", "Lote visto do alto"],
         ["03-medidas-do-lote.jpg", "Medidas do lote"],
