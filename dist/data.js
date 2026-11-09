@@ -422,14 +422,14 @@
     },
     {
       slug: "sitio-vovo-carlinhos", alt: "foto_90d8c8b45a15412591b193991198e2d8.jpg", id: "VC-02", base: "vovo", type: "Sítio", mode: "Temporada",
-      title: "Sítio Vovô Carlinhos", city: "Cunha-SP", region: "Serra do Mar",
+      title: "Sítio do Vovô Carlinho", city: "Cunha-SP", region: "Serra do Mar",
       cover: "foto_e7c88347d4ac456e85b6b505bb91640d.jpg",
       cardFeatures: [["leaf", "Piscina com cascata"], ["leaf", "Fogão e forno a lenha"], ["bed", "Quartos aconchegantes"]],
       priceLabel: "Aluguel de temporada", price: "Consulte datas",
       kicker: "Aluguel de temporada · Serra de Cunha",
       tagline: ["Onde o relógio", "anda mais devagar."],
       subtitle: "Fogão a lenha, pizza no forno, piscina com cascata e o silêncio dos morros de Cunha.",
-      intro: "Na serra de Cunha, o dia começa com vista para os morros e termina com céu estrelado. O Sítio Vovô Carlinhos é feito de coisas simples, e por isso mesmo tão difíceis de encontrar.",
+      intro: "Na serra de Cunha, o dia começa com vista para os morros e termina com céu estrelado. O Sítio do Vovô Carlinho é feito de coisas simples, e por isso mesmo tão difíceis de encontrar.",
       stats: [
         { v: "Lenha", l: "fogão e forno de pizza" },
         { v: "Cascata", l: "na piscina, com vista" },
@@ -457,7 +457,7 @@
         points: [["Cidade", "Cunha-SP", "Serra do Mar, interior de São Paulo."], ["Estadia", "Temporada", "Datas, valores e capacidade direto com o Ney."], ["Chegada", "Endereço na reserva", "A localização exata é enviada ao confirmar."]]
       },
       cta: { title: ["Reserve seus dias", "na serra."], text: "Conte quando quer vir e quantas pessoas. O Ney responde com datas livres e valores.", button: "Consultar disponibilidade", booking: true },
-      whatsapp: "Olá Ney! Quero reservar uma temporada no Sítio Vovô Carlinhos, em Cunha.",
+      whatsapp: "Olá Ney! Quero reservar uma temporada no Sítio do Vovô Carlinho, em Cunha.",
       gallery: [
         ["foto_e7c88347d4ac456e85b6b505bb91640d.jpg", "Quiosque cercado pelos morros verdes de Cunha"],
         ["foto_60b7298bab714565bbbc7dca078d98da.jpg", "Forno a lenha e mesa de refeições"],
